@@ -1,0 +1,415 @@
+/* Set the font for the entire website.
+Also set the default background colour,
+and remove the margin so there's no ugly borders. */
+body {
+  background-color: #dbeaf1;
+  margin: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Nav bar designed for mobile. */
+nav {
+  background-color: #1d1a45;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Div containing the WebTech logo. Same
+background colour as the logo. Re-sizable
+div containing the logo essentially creates
+a 'banner' with the WebTech logo above the
+mobile nav bar. */
+.nav-logo {
+  height: 46px;
+  background-color: #dbeaf1;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Remove list decoration (e.g. bullet points by each item),
+remove margin/ padding so that the nav-bar is smooth with the 
+options with no border. Flex-direction: column makes the
+nav bar vertical, which is suitable for mobile devices. */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-direction: column;
+  align-items: left;
+}
+
+/* Padding creates a 'box' around the text to space out the items,
+making them easier to tap on mobile. White text creates visual contrast
+from the background, aiding accessibility. Also remove the underline
+from the text (as they're links, which normally are underlined). */
+ul li a { 
+  display: block;
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+  text-align: center;
+}
+
+/* Colour shift when hovering a cursor over a nav bar item. This
+is for desktop use, but it has no negative impact on the site's
+mobile-friendliness, so it isn't locked behind media queries
+(this also means it works in a very small browser window). */
+ul li a:hover {
+  background-color: #981919;
+}
+
+/* The active page's nav link is coloured bright red, so it's clear
+to the user what page they are on. This also overrides the hover
+colour-change, so the user can't get mixed up what page they're on
+even if they are hovering over the active page's link.*/
+ul li a.active {
+  /* Colour changed from original WebTech design
+  guidelines for accessibility purposes (colour contrast). */
+  background-color: #da2f2f;
+}
+
+/* Set the default for the main page content to be centre-aligned
+text, as well as set the size. Add some padding around the page so
+that content isn't going right up to the edges, which could be hard
+to read (e.g. maybe the user has a phone case that obstructs some of
+the screen edge). */
+.content-container {
+  padding: 10px;
+  font-size: 30px;
+  text-align: center;
+}
+
+/* Grid display for the content boxes on the first page.
+Grids can be easily adjusted via media queries as screen
+size increases, making the page suitable for tablets and
+desktop too. Default puts all content boxes on top of one
+another, suitable for scrolling through on mobile.*/
+/* The other pages' search results also use a grid-based
+layout, so they share the same CSS here. */
+.frontpage-fluff, .search-results, .details-results {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+/* Content across the site will be displayed in different boxes.
+While there are different types, they share common colours (chosen
+with colour contrast/ accessibility in mind) and layout elements,
+making the entire site visually consistent. */
+.movie-box, .title-bar, .detail-box, .fluff-box, .error-box {
+  background-color: #1d1a45;
+  color: white;
+  border: 3px solid #da2f2f;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 8px;
+}
+
+/* Error boxes show up when a search yields no results, and are
+differently shaped to be in-line with the size and position of
+the search forms. */
+.error-box {
+  justify-self: center;
+  width: 90%;
+  max-width: 530px;
+}
+
+/* Aligning the content in the center (vertically) evenly spreads
+any empty space between the areas above and below the content,
+which is more visually appealing than a large gap below the text. */
+.detail-box, .fluff-text {
+  align-content: center;
+}
+
+/* No padding combined with image height/ width 100% (see below)
+makes the image take up the entire box, with no dark blue borders. */
+.fluff-image {
+  padding: 0;
+}
+
+.fluff-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* When displayed in thinner boxes, such as on smaller mobile
+screens, part of the image gets cut off (by design).
+Object-position is used here to manipulate which part of the
+image stays on screen. */
+.fluff-2 {
+  object-position: 75% 50%;
+}
+
+/* Set the text colour and size of the frontpage box titles,
+as well as making the text bold. */
+.fluff-box-title {
+  /* Colour changed from original Web Tech design
+  guidelines for accessibility purposes (colour contrast). */
+  color: #ff3737;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+/* Set the text size of the frontpage box content, and make the
+text go left-to-right like normal writing, instead of being centered.
+Extra left/right padding leaves larger gaps between the edges of the
+box and the text, which makes it easier to read/ more visually pleasant. */
+.fluff-box-content {
+  font-size: 22px;
+  text-align: left;
+  padding-left: 10px; 
+  padding-right: 10px;
+}
+
+/* Grid column has been used to center the title bar/ error box within a grid.
+These two items are intended to have an entire row to themselves, hence the
+centering (they don't need to share any space with other elements.*/
+.title-bar, .error-box {
+  grid-column: 1/-1;
+  font-weight: bold;
+}
+
+/* During a movie search, the search result boxes contain the movie's poster.
+Each one is cut down to a small square for visual consistency purposes. Align
+content: center is used so that the center of the poster (which is probably the
+most important part) is kept during this cropping. The background colour is set to
+gray for if a poster can't be found. Also set a red border for visual appeal, and
+to make the poster borders distinct from the rest of the box.*/
+.movie-box-poster-img {
+  object-fit: cover;
+  height: 250px;
+  width: 250px;
+  background-color: grey;
+  align-content: center;
+  border: 2px solid #da2f2f;
+}
+
+/* When viewing a movie's full details, the poster is instead shown in full.
+The size of the poster is adjusted depending on screen size, but the full
+image is maintained regardless. */
+.detail-box img {
+  width: 100%;
+  object-fit: scale-down;
+}
+
+/* Text in the movie search results is truncated if it
+goes on too long, to prevent some boxes taking up too
+much space. */
+.movie-box-text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* Should the poster in the search boxes be bigger than
+the search box, scale it down. I don't think this is possible,
+but just incase. The 4px bottom margin adds a small gap between
+the poster and text on the search box; visual appeal stuff. */
+.movie-box-poster {
+  object-fit: cover;
+  margin-bottom: 4px;
+}
+
+/* Set the font size of box titles, whether they be for
+search results, movie details. Error text (no search results)
+also uses the same format. Make the text bold too. */
+.movie-box-text-title, .detail-box-title, .error-box-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* During a search, the year of the movie is displayed below it's
+title. The year text is made smaller, and put into italics. */
+.movie-box-text-year {
+  font-size: 20px;
+  font-style: italic;
+  margin: 0px;
+  margin-bottom: 4px;
+}
+
+/* Set the font for text on images (relevant for when posters
+can't be found. */
+img {
+  font-size: 20px;
+  border-radius: 8px;
+}
+
+/* Visual formatting for buttons, which appear with some frequency
+across the site. Mostly visual stuff, but appropriate size/ colour
+considerations have been made to make it easy to read for people
+with visual impairments. Cursor: pointer turns the mouse into a
+'clicking finger' icon when hovering over the button; not relevant
+to mobile design, but harmless enough not to be locked behind
+media queries. Form submit buttons are, essentially, just buttons,
+so they share a lot of visual formatting. There's a few visual
+distinctions below, mainly due to the kinds/ colours of containers
+that they're located on.*/
+button, input[type=submit] {
+  display: block;
+  text-align: center;
+  width: 100%;
+  background-color: #da2f2f;
+  color: white;
+  font-size: 18px;
+  padding: 11px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* The same colour-changing hovering effect as the nav bar. */
+button:hover, input[type=submit]:hover {
+  background-color: #981919;
+}
+
+button {
+  margin: auto;
+  border-color: white;
+}
+
+input[type=submit] {
+  margin: 10px auto;
+  border: 2px solid #aaa;
+}
+
+/* Containers for the HTML forms. Centered on the page, and capped
+to not stretch across the whole page on a wide screen (e.g. a tablet);
+a 1000px-long text box is quite ugly, and might be hard to use. */
+.search-container, .details-container {
+  margin: auto;
+  padding: 10px;
+  font-size: 40px;
+  width: 90%;
+  max-width: 530px;
+}
+
+/* A bit more visual stuff, like setting the font size, for the
+HTML forms. */
+.search-form, .details-search-form {
+  padding-top: 10px;
+  text-align: start;
+  font-size: 20px;
+}
+
+label {
+  padding-top: 8px;
+  display: block;
+}
+
+/* Visual formatting for the text input boxes, alongside
+determining their layout within the HTML form area. */
+input[type=text] {
+  font-size: 18px;
+  display: inline-block;
+  border-radius: 8px;
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #aaa;
+}
+
+/* "Second-form" items, alongside "left-label" and "right-label"
+are used for the "Search Movies" form. It takes three inputs, but
+the year and number of results inputs will be smaller than the
+title input, so this CSS is used to place those two input fields
+in-line with one-another on the second row. */
+.second-form-row {
+  display: block;
+}
+
+.second-form-row input[type=text] {
+  display: inline-block;
+  width: 59%;
+}
+
+.second-form-row label {
+  display: inline-block;
+}
+
+.left-label {
+  width: 59%;
+}
+
+.right-label {
+  width: 39%;
+}
+
+.second-form-row select {
+  display: inline-block;
+  width: 39%;
+  font-size: 18px;
+  padding: 12px;
+  border-radius: 8px;
+  box-sizing: border-box;
+
+}
+
+/* Font size for all the boxes' content on the detail page. */
+.detail-title, .detail-content, .detail-content-solo {
+  font-size: 18px;
+}
+
+/* Make the text of sub-titles on detail boxes red, bold, and snug
+next to the content they're sub-titles for. The red is slightly different
+to the WebTech design guidelines for accessibility purposes (colour contrast). */
+.detail-title {
+  color: #ff3737;
+  font-weight: bold;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.detail-content {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* These media queries concern adjusting the visual format/ layout of the
+webpage depending on screen size. This is relevant to devices with larger
+screens, like tablets or desktops. */
+@media screen and (min-width: 620px) {
+  /* Set the different grids to be two columns wide instead of one. */
+  .search-results, .details-results, .frontpage-fluff {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  /* Slighlty increase the font size for larger screens. */
+  .search-form, .details-search-form {
+  font-size: 22px;
+  } 
+}
+/* This is getting to sizes used by very large tablets and
+desktops. Very few mobile phones will be of this size, even in landscape. */
+@media (min-width: 930px) {
+  .search-results, .details-results, .frontpage-fluff {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  /* Set the nav bar to be horizontal instead of vertical, which is more suitable for
+  larger screens. Adjust the nav bar accordingly to look right and have the items in-line
+  with each other. */
+  nav {
+    flex-direction: row;
+    align-items: normal;
+  }
+  .nav-logo {
+    width: auto;
+  }
+  ul {
+    flex-direction: row;
+    align-items: center;
+  }
+  ul li a {
+    display: flex;
+  }
+}
+
+/* Larger screen sizes just increase the number of columns used
+in the various grid elements. */
+@media (min-width: 1240px) {
+  .search-results, .details-results {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+

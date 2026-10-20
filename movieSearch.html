@@ -1,0 +1,56 @@
+<!-- Lang attribute helps accessibility (e.g. screen readers). -->
+<html lang="en-GB">
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <title>WebTech Movie Database: Search</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <nav>
+            <!-- Add WebTech logo to navigation bar. -->
+            <div class="nav-logo">
+                <img src="WebTechLogo.png" alt="">
+            </div>
+            <!-- Navigation bar for the three pages. --> 
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="movieSearch.html" class="active">Search Movies</a></li>
+                <li><a href="movieDetails.html">Movie Details</a></li>
+            </ul>
+        </nav>
+        <div class="content-container">
+            <!-- Container for search form. --> 
+            <div class="search-container">
+                <b>Search Movies</b>
+                <form class="search-form" id="searchForm">
+                    <label for="mTitle">Movie Title</label>
+                    <input type="text" id="mTitle" name="mTitle" required placeholder="e.g. Lawrence of Arabia">
+                    <div class="second-form-row">
+                        <label class="left-label" for="mYear">Year(s) (optional)</label>
+                        <label class="right-label" for="mPages">Number of Results</label>
+                        <!-- Placeholder text shows user the two ways of inputting year filters. --> 
+                        <input type="text" id="mYear" name="mYear" placeholder="e.g. 1962, 1960-1964">
+                        <!-- Value is how many search pages, which is useful internally.
+                         Displayed number is how many search results, which is of value to
+                         the user. --> 
+                        <select id="mPages" name="mPages">
+                            <option value="1">10</option>
+                            <option value="2">20</option>
+                            <option value="3">30</option>
+                            <option value="4">40</option>
+                            <option value="5">50</option>
+                        </select>
+                    </div>
+                    <input type="submit" value="Search">
+                </form>
+            </div>
+            <!-- Empty container to be dynamically filled
+             with search results. --> 
+            <div class="search-results" id="searchResults">
+            </div>
+        </div>
+    </body>
+
+<script src="movieSearch.js"></script>
+
+</html>

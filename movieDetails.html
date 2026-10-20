@@ -1,0 +1,42 @@
+<!-- Lang attribute helps accessibility (e.g. screen readers). -->
+<html lang="en-GB">
+<head>
+        <link rel="stylesheet" href="style.css">
+        <title>WebTech Movie Database: Details</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body onload="onLoadFunction()">
+        <nav>
+            <!-- Add WebTech logo to navigation bar. -->
+            <div class="nav-logo">
+                <img src="WebTechLogo.png" alt="">
+            </div> 
+            <ul>
+            <!-- Navigation bar for the three pages. --> 
+                <li><a href="index.html">Home</a></li>
+                <li><a href="movieSearch.html">Search Movies</a></li>
+                <li><a href="movieDetails.html" class="active">Movie Details</a></li>
+            </ul>
+        </nav>
+        <div class="content-container">
+            <!-- Container for details form. --> 
+            <div class="details-container">
+                <b>Get Movie Details</b>
+                <form id="detailsSearchForm" class="details-search-form">
+                    <label for="mId">IMDB ID</label>
+                    <!-- Placeholder text gives an example to the user
+                     of how IMDB IDs are formatted. --> 
+                    <input type="text" id="mId" name="mId" required placeholder="e.g. 'tt0056172'"><br>
+                    <input type="submit" value="Search">
+                </form>
+            </div>
+            <!-- Empty container to be dynamically filled
+             with detail search results. --> 
+            <div class="details-results" id="detailsResults">
+            </div>
+        </div>
+    </body>
+    
+    <script src="movieDetails.js"></script>
+
+</html>
