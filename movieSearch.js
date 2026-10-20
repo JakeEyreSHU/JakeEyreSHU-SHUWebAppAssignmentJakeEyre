@@ -113,6 +113,7 @@ the movie's poster, title, and year, alongside a button that can
 take the user to the Movie Details page for that movie. Each box
 created is added to the grid in 'search-results' on the HTML page. */
 const displayMovies = (movies) => {
+    // Clear any previous search.
     searchOutput.innerHTML = "";
     movies.forEach((movie) => {
         const movieBox = `
@@ -166,7 +167,7 @@ const validateForm = () => {
     }
 
     // Get the current date to make sure the year input is valid. Future-proof.
-    let date = new Date();
+    const date = new Date();
     // Pull the year input from the input form.
     let formYear = searchInputForm.elements["mYear"].value;
     let processedYear;
@@ -219,3 +220,6 @@ searchInputForm.addEventListener('submit', (e) => {
     searchMovies();
     }
 });
+
+/* Citation: https://github.com/Manu577228/Vanilla-JS-Movies-Search-App/tree/master provided
+some inspiration on how to use the OMDb API, and on how to process the results of OMDb API searches. */
