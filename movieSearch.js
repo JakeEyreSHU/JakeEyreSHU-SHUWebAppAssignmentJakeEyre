@@ -13,7 +13,7 @@ const searchMovies = async () => {
     Type = Movie) will be present in all possible searches. */
     /* The API Key is pulled from the global variables, while the
     Movie Title is pulled from the form where the user has given input. */
-    let searchQuery = `https://www.omdbapi.com/?apikey=${apiKey}&s=${searchInputForm.elements["mTitle"].value}&type=movie`;
+    let searchQuery = `https://www.omdbapi.com/?apikey=${apiKey}&s=${encodeURIComponent(searchInputForm.elements["mTitle"].value)}&type=movie`;
     console.log(searchQuery);
     /* Pull the user's year input and choice for number of search
     results from the same input form. */
